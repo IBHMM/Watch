@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { PopularItems } from '../api/apipopularitems';
 import { NewArrivals } from '../api/apinewarrivals';
 import { Choises } from '../api/apichoise';
-import { Photos, photosApi } from '../api/apiphotos';
+import { photosApi } from '../api/apiphotos';
 
 const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ const store = configureStore({
     [photosApi.reducerPath] : photosApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(PopularItems.middleware, NewArrivals.middleware, Choises.middleware, Photos.middleware),
+    getDefaultMiddleware().concat(PopularItems.middleware, NewArrivals.middleware, Choises.middleware, photosApi.middleware),
 });
 
 export default store;
