@@ -4,7 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Home } from "./pages/client/Home";
 import { Admin } from "./pages/admin";
 import { ChoiceMain } from "./components/admin/Choises/Main";
+
+import Basket from "./components/client/Basket";
 import { PopularItemsMain } from "./components/admin/Popular/Main";
+
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: "home",
                 element: <Home />
+            },
+            {
+                path: "basket", 
+                element: <Basket />
             }
         ]
     },
