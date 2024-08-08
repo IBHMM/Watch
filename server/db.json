@@ -1,0 +1,62 @@
+[
+    
+    "newarrivals": [
+
+    ],
+    "popularitems": [
+            {
+                "id": 1,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product1.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 30
+            },
+            {
+                "id": 2,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product2.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 20
+            },
+            {
+                "id": 3,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product2.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 20
+            },
+            {
+                "id": 4,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product2.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 20
+            },
+            {
+                "id": 5,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product2.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 20
+            },
+            {
+                "id": 6,
+                "name": "Green Dress with details",
+                "img": "https://preview.colorlib.com/theme/estore/assets/img/categori/product2.png.webp",
+                "price": "234",
+                "is_new": true,
+                "discount": 20
+            }
+    ],
+    "choice" : [
+        {
+            "image": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "title": "Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse."
+        }
+    ]
+    ]
