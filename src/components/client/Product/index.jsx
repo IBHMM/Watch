@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetPopularitemsQuery } from "../../../redux/api/apipopularitems";
+import { useGetPopularItemsQuery } from "../../../redux/api/apipopularitems";
 import "../Product/style.css";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { addToCart } from "../../../redux/api/cartSlice";
 
 
 function Product() {
-  const { data, isLoading, isError } = useGetPopularitemsQuery();
+  const { data, isLoading, isError } = useGetPopularItemsQuery();
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
@@ -41,7 +41,6 @@ function Product() {
         {data &&
           data.map((product, index) => {
             return (
-              
                 <div className="col-md-4" key={index}>
                   <div
                     className="bgImg_watch mb-5"
@@ -54,7 +53,6 @@ function Product() {
                     <button onClick={() => handleAddToCart(product)} className="product_btn">Add to cart</button>
                   </div>
                 </div>
-              
             );
           })}
           </div>

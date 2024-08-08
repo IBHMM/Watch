@@ -16,8 +16,9 @@ export function PopularItemsMain() {
   useEffect(() => {
     if (currentItem) {
       form.setFieldsValue({
-        title: currentItem.title,
+        name: currentItem.name,
         image: currentItem.image,
+        price: currentItem.price
       });
       setImage(currentItem.image);
     }
@@ -34,9 +35,9 @@ export function PopularItemsMain() {
   const handleAddOrEditItem = async (values) => {
     try {
       if (isEditing) {
-        await edit({ id: currentItem.id, ...values, image }).unwrap();
+        await edit({ id: currentItem.id, ...values, image });
       } else {
-        await handleAdd({ ...values, image }).unwrap();
+        await handleAdd({ ...values, image });
       }
       setIsModalVisible(false);
       form.resetFields();
@@ -129,9 +130,16 @@ export function PopularItemsMain() {
           onFinish={handleAddOrEditItem}
         >
           <Form.Item
-            label="Title"
-            name="title"
-            rules={[{ required: true, message: 'Please input the title!' }]}
+            label="name"
+            name="name"
+            rules={[{ required: true, message: 'Please input the name!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="price"
+            name="price"
+            rules={[{ required: true, message: 'Please input the price!' }]}
           >
             <Input />
           </Form.Item>
