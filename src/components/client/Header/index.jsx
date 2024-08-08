@@ -13,8 +13,8 @@ function Header() {
   console.log(isError, "isError");
 
   return (
-    <main className="container">
-      <div className="row justify-content-center align-items-center container_heading">
+    <main className="container container_heading">
+      <div className="row justify-content-center align-items-center">
         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
           <div class="header_content">
             <h1 className="content_heading">Select Your New Perfect Style</h1>
@@ -28,7 +28,7 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
+        <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 d-none d-md-block">
             <div className="watch_bg">
                 <img src="https://preview.colorlib.com/theme/timezone/assets/img/hero/watch.png.webp" alt="backgroundWatch" />
             </div>
