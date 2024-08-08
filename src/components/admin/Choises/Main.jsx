@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Spin, Alert, Modal, Form, Input } from 'antd';
-import { useGetChoiseQuery } from '../../../redux/api/apichoise';
+import { useChangeChoiseMutation, useGetChoiseQuery } from '../../../redux/api/apichoise';
 
 export function ChoiceMain() {
   const { data, isLoading, isError } = useGetChoiseQuery();
+  const [edit] = useChangeChoiseMutation();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [currentChoice, setCurrentChoice] = useState(null);
@@ -26,9 +27,8 @@ export function ChoiceMain() {
 
   const handleAddOrEditChoice = (values) => {
     if (isEditing) {
-      
+       
     } else {
-     
     }
     setIsModalVisible(false);
     form.resetFields();
