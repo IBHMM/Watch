@@ -1,16 +1,13 @@
 import React from "react";
 import "../Header/style.css"
-import { useGetPopularitemsQuery } from "../../../redux/api/apipopularitems";
-import { useGetnewArrivalsQuery } from "../../../redux/api/apinewarrivals";
 
 function Header() {
-
 
   return (
     <main className="container container_heading">
       <div className="row justify-content-center align-items-center">
         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-          <div class="header_content">
+          <div class="header_content ">
             <h1 className="content_heading">Select Your New Perfect Style</h1>
             <p className="content_desc">
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
