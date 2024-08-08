@@ -1,51 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Spin, Alert, Modal, Form, Input } from 'antd';
-import { useAddChoiseMutation, useChangeChoiseMutation, useDeleteChoiseMutation, useGetChoiseQuery } from '../../../redux/api/apichoise';
+import { useAddPopularItemMutation, useChangePopularItemMutation, useDeletePopularItemMutation, useGetPopularItemsQuery } from '../../../redux/api/apipopularitems';
 
-export function ChoiceMain() {
-  const { data, isLoading, isError, refetch } = useGetChoiseQuery();
-  const [edit, { isLoading: isEditingLoading, isError: isEditError }] = useChangeChoiseMutation();
-  const [handleDel, { isLoading: isDeleteLoading, isError: isDeleteError }] = useDeleteChoiseMutation();
-  const [handleAdd, { isLoading: isAddLoading, isError: isAddError }] = useAddChoiseMutation();
+export function PopularItemsMain() {
+  const { data, isLoading, isError } = useGetPopularItemsQuery();
+  const [edit, { isLoading: isEditingLoading, isError: isEditError }] = useChangePopularItemMutation();
+  const [handleDel, { isLoading: isDeleteLoading, isError: isDeleteError }] = useDeletePopularItemMutation();
+  const [handleAdd, { isLoading: isAddLoading, isError: isAddError }] = useAddPopularItemMutation();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [currentChoice, setCurrentChoice] = useState(null);
+  const [currentItem, setCurrentItem] = useState(null);
   const [form] = Form.useForm();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
 
   useEffect(() => {
-    if (currentChoice) {
+    if (currentItem) {
       form.setFieldsValue({
-        title: currentChoice.title,
-        image: currentChoice.image,
+        title: currentItem.title,
+        image: currentItem.image,
       });
-      setImage(currentChoice.image);
+      setImage(currentItem.image);
     }
-  }, [currentChoice, form]);
+  }, [currentItem, form]);
 
   const handleDelete = async (id) => {
     try {
-      await handleDel(id);
-      refetch();
+      await handleDel(id).unwrap();
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  const handleAddOrEditChoice = async (values) => {
+  const handleAddOrEditItem = async (values) => {
     try {
       if (isEditing) {
-        await edit({ id: currentChoice.id, ...values, image });
-        refetch()
-
+        await edit({ id: currentItem.id, ...values, image }).unwrap();
       } else {
-        await handleAdd({ ...values, image })
-        refetch()
+        await handleAdd({ ...values, image }).unwrap();
       }
       setIsModalVisible(false);
       form.resetFields();
-      setImage(null);
-      setCurrentChoice(null);
+      setImage('');
+      setCurrentItem(null);
       setIsEditing(false);
     } catch (error) {
       console.error('Error:', error);
@@ -56,8 +52,8 @@ export function ChoiceMain() {
     setImage(e.target.value);
   };
 
-  const handleEditClick = (choice) => {
-    setCurrentChoice(choice);
+  const handleEditClick = (item) => {
+    setCurrentItem(item);
     setIsEditing(true);
     setIsModalVisible(true);
   };
@@ -67,12 +63,17 @@ export function ChoiceMain() {
       title: 'Image',
       dataIndex: 'image',
       key: 'image',
-      render: (image) => <img src={image} alt="choice" style={{ width: '100px', height: 'auto' }} />,
+      render: (image) => <img src={image} alt="item" style={{ width: '100px', height: 'auto' }} />,
     },
     {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
     },
     {
       title: 'Actions',
@@ -105,9 +106,9 @@ export function ChoiceMain() {
   return (
     <div className="p-4">
       <div className="bg-blue-100 p-4 rounded-lg shadow-md mb-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-blue-700">Manage Choices</h1>
+        <h1 className="text-xl font-semibold text-blue-700">Manage Popular Items</h1>
         <Button type="primary" size="large" className="bg-blue-500 hover:bg-blue-600" onClick={() => setIsModalVisible(true)}>
-          Add New Choice
+          Add New Item
         </Button>
       </div>
       <Table
@@ -117,7 +118,7 @@ export function ChoiceMain() {
         pagination={{ pageSize: 10 }} 
       />
       <Modal
-        title={isEditing ? "Edit Choice" : "Add New Choice"}
+        title={isEditing ? "Edit Item" : "Add New Item"}
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={null}
@@ -125,7 +126,7 @@ export function ChoiceMain() {
         <Form
           form={form}
           layout="vertical"
-          onFinish={handleAddOrEditChoice}
+          onFinish={handleAddOrEditItem}
         >
           <Form.Item
             label="Title"
@@ -146,7 +147,7 @@ export function ChoiceMain() {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={isEditing ? isEditingLoading : isAddLoading}>
-              {isEditing ? 'Update Choice' : 'Add Choice'}
+              {isEditing ? 'Update Item' : 'Add Item'}
             </Button>
           </Form.Item>
         </Form>
