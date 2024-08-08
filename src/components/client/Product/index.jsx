@@ -1,9 +1,9 @@
 import React from "react";
-import { useGetPopularitemsQuery } from "../../../redux/api/apipopularitems";
+import { useGetPopularItemsQuery } from "../../../redux/api/apipopularitems";
 import "../Product/style.css";
 
 function Product() {
-  const { data, isLoading, isError } = useGetPopularitemsQuery();
+  const { data, isLoading, isError } = useGetPopularItemsQuery();
 
   return (
     <div className="container">
