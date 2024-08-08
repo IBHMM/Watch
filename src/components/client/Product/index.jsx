@@ -1,9 +1,10 @@
 import React from "react";
 import { useGetPopularitemsQuery } from "../../../redux/api/apipopularitems";
+import "../Product/style.css";
 
 function Product() {
   const { data, isLoading, isError } = useGetPopularitemsQuery();
-    console.log(data)
+
   return (
     <div className="container">
       <div className="row">
@@ -13,15 +14,20 @@ function Product() {
         <div className="d-flex justify-content-center">
           {isError && <h2>ERROR</h2>}
         </div>
-        {products && (
-            products.map((product) => {
-            return    <div className="col-md-4">
-                    {/* <div className="bgImg_watch" style={{backgroundImage:`${product.image}`}} >
+        {data &&
+          data.map((product, index) => {
+            return (
+              <div className="col-md-4" key={index}>
+                <div
+                  className="bgImg_watch m-2"
+                  style={{ backgroundImage: `url(${product.image})` }}
+                >
 
-                    </div> */}
+                    <button>add</button>
                 </div>
-            })
-        )}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
