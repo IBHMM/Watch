@@ -1,17 +1,16 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const Photos = createApi({
+export const photosApi = createApi({
   reducerPath: 'photos',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonwatchdb-iejj.vercel.app/' }),
   endpoints: (builder) => ({
-    getChoise: builder.query({
-      query: () => 'photos'
+    getPhotos: builder.query({
+      query: () => 'photos',
     }),
-    getChoiseById: builder.query({
-      query: (id) => `photos/${id}`
+    getPhotoById: builder.query({
+      query: (id) => `photos/${id}`,
     }),
   }),
-})
+});
 
-
-export const { usePhotosQuery , useGetChoiseByIdQuery } = Photos
+export const { useGetPhotosQuery, useGetPhotoByIdQuery } = photosApi;
