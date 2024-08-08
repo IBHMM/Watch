@@ -4,12 +4,16 @@ import Navbar from "react-bootstrap/Navbar";
 import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
+import "../Navbar/style.css"
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 export function NavbarClient() {
+  const cartItems = useSelector((state) => state.cart);
   return (
     <>
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar bg="light" data-bs-theme="light" className="navbar_menu fixed-top">
         <Container className="p-3 ps-5 pe-5">
           <Navbar.Brand href="#home">
             <img
@@ -33,8 +37,13 @@ export function NavbarClient() {
             <Nav.Link>
               <CiUser />
             </Nav.Link>
-            <Nav.Link>
-              <FiShoppingCart />
+            <Nav.Link as={Link} to="/basket" className="position-relative">
+              <FiShoppingCart/>
+              {cartItems.length > 0 && (
+                <span className="cart-badge position-absolute top-4 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartItems.length}
+                </span>
+              )}
             </Nav.Link>
           </Nav>
         </Container>

@@ -34,7 +34,7 @@ function NewArriwal() {
                                 <div className="arriwals_content">
                                     <p>{items.name}</p>
                                 </div>
-                                <div className="arriwals_price">
+                                <div className="arriwals_price mb-4">
                                     <p>
                                         $ {items.price.toString().slice(0, 3)}
                                         
