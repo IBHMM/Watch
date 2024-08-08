@@ -24,9 +24,9 @@ function NewArriwal() {
 
                     <div className="row">
 
-                    {data.map((items)=>{
+                    {data.map((items, index)=>{
 
-                       return <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
+                       return <div key={index} className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                                 <div className="arriwals_img">
                                     <img src={items.image} alt="arriwalsimage" />
                                     {console.log(items.image)}
