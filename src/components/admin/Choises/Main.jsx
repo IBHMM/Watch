@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Spin, Alert, Modal, Form, Input } from 'antd';
-import { Link } from 'react-router-dom';
 import { useGetChoiseQuery } from '../../../redux/api/apichoise';
 
 export function ChoiceMain() {
@@ -9,7 +8,7 @@ export function ChoiceMain() {
   const [isEditing, setIsEditing] = useState(false);
   const [currentChoice, setCurrentChoice] = useState(null);
   const [form] = Form.useForm();
-  const [image, setImage] = useState(null); // To store image URL
+  const [image, setImage] = useState(null); 
 
   useEffect(() => {
     if (currentChoice) {
@@ -22,25 +21,20 @@ export function ChoiceMain() {
   }, [currentChoice, form]);
 
   const handleDelete = (id) => {
-    // Assuming you have a delete mutation hook
-    // dispatch(deleteChoice(id));
+   
   };
 
   const handleAddOrEditChoice = (values) => {
     if (isEditing) {
-      console.log('Updating choice:', { ...values, image });
-      // Dispatch an action to update the choice
-      // dispatch(updateChoice({ id: currentChoice.id, ...values, image }));
+      
     } else {
-      console.log('Adding new choice:', { ...values, image });
-      // Dispatch an action to add a new choice
-      // dispatch(addChoice({ ...values, image }));
+     
     }
     setIsModalVisible(false);
     form.resetFields();
-    setImage(null); // Clear image URL after submission
-    setCurrentChoice(null); // Reset current choice
-    setIsEditing(false); // Reset editing state
+    setImage(null); 
+    setCurrentChoice(null);
+    setIsEditing(false); 
   };
 
   const handleImageChange = (e) => {
