@@ -12,7 +12,7 @@ const store = configureStore({
     [Photos.reducerPath] : Photos.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(PopularItems.middleware, NewArrivals.middleware),
+    getDefaultMiddleware().concat(PopularItems.middleware, NewArrivals.middleware, Choises.middleware, Photos.middleware),
 });
 
 export default store;
