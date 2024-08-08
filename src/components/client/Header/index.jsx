@@ -1,7 +1,17 @@
 import React from "react";
 import "../Header/style.css"
+import { useGetPopularitemsQuery } from "../../../redux/api/apipopularitems";
+import { useGetnewArrivalsQuery } from "../../../redux/api/apinewarrivals";
 
 function Header() {
+
+  // const {isLoading, isError, data} = useGetPopularitemsQuery();
+  const {isLoading, isError, data} = useGetnewArrivalsQuery();
+
+  console.log(data, "data");
+  console.log(isLoading, "isLoading");
+  console.log(isError, "isError");
+
   return (
     <main className="container">
       <div className="row justify-content-center align-items-center container_heading">

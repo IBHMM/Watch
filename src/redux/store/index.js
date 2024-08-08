@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { PopularItems } from '../api/apipopularitems';
+import { NewArrivals } from '../api/apinewarrivals';
 
-export const store = configureStore({
-//   reducer: {
-//   },
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware().concat(CategoryApi.middleware),
+
+const store = configureStore({
+  reducer: {
+    [PopularItems.reducerPath]: PopularItems.reducer,
+    [NewArrivals.reducerPath] : NewArrivals.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(PopularItems.middleware, NewArrivals.middleware),
 });
 
-setupListeners(store.dispatch);
+export default store;
