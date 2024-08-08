@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Spin, Alert, Modal, Form, Input } from 'antd';
-import { useChangeChoiseMutation, useGetChoiseQuery } from '../../../redux/api/apichoise';
+import { useAddChoiseMutation, useChangeChoiseMutation, useDeleteChoiseMutation, useGetChoiseQuery } from '../../../redux/api/apichoise';
 
 export function ChoiceMain() {
   const { data, isLoading, isError } = useGetChoiseQuery();
-  const [edit] = useChangeChoiseMutation();
+  const [edit, { isLoading: isEditingLoading, isError: isEditError }] = useChangeChoiseMutation();
+  const [handleDel, { isLoading: isDeleteLoading, isError: isDeleteError }] = useDeleteChoiseMutation();
+  const [handleAdd, { isLoading: isAddLoading, isError: isAddError }] = useAddChoiseMutation();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [currentChoice, setCurrentChoice] = useState(null);
   const [form] = Form.useForm();
-  const [image, setImage] = useState(null); 
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     if (currentChoice) {
@@ -21,20 +23,29 @@ export function ChoiceMain() {
     }
   }, [currentChoice, form]);
 
-  const handleDelete = (id) => {
-   
+  const handleDelete = async (id) => {
+    try {
+      await handleDel(id).unwrap();
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
-  const handleAddOrEditChoice = (values) => {
-    if (isEditing) {
-       
-    } else {
+  const handleAddOrEditChoice = async (values) => {
+    try {
+      if (isEditing) {
+        await edit({ id: currentChoice.id, ...values, image }).unwrap();
+      } else {
+        await handleAdd({ ...values, image }).unwrap();
+      }
+      setIsModalVisible(false);
+      form.resetFields();
+      setImage(null);
+      setCurrentChoice(null);
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error:', error);
     }
-    setIsModalVisible(false);
-    form.resetFields();
-    setImage(null); 
-    setCurrentChoice(null);
-    setIsEditing(false); 
   };
 
   const handleImageChange = (e) => {
@@ -68,6 +79,7 @@ export function ChoiceMain() {
             type="link"
             onClick={() => handleDelete(record.id)}
             style={{ color: 'red' }}
+            loading={isDeleteLoading}
           >
             Delete
           </Button>
@@ -129,7 +141,7 @@ export function ChoiceMain() {
             {image && <img src={image} alt="Preview" style={{ width: '100px', height: 'auto', marginTop: '10px' }} />}
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={isEditing ? isEditingLoading : isAddLoading}>
               {isEditing ? 'Update Choice' : 'Add Choice'}
             </Button>
           </Form.Item>
