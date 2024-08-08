@@ -14,4 +14,4 @@ export const Photos = createApi({
 })
 
 
-export const { useGetChoiseByIdQuery, useGetChoiseQuery } = Choise
+export const { useGetChoiseByIdQuery, useGetChoiseQuery } = Photos

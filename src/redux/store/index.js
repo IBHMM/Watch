@@ -4,7 +4,6 @@ import { NewArrivals } from '../api/apinewarrivals';
 import { Choises } from '../api/apichoise';
 import { Photos } from '../api/apiphotos';
 
-
 const store = configureStore({
   reducer: {
     [PopularItems.reducerPath]: PopularItems.reducer,
