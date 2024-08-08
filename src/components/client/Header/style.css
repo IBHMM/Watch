@@ -5,12 +5,16 @@
 }
 
 .container_heading{
-    height: 130vh;
+    min-height: 100vh;
     background-color: #f0f0f2;
 }
-
+.header_content{
+    width: 70%;
+    
+}
 .content_heading{
-    font-size: 96px;
+    
+    font-size: 76px;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 26px;
@@ -26,15 +30,16 @@
 }
 
 .content_btn button{
-    padding: 25px 29px;
+    padding: 15px 29px;
     background: #4a4a4b;
     color: white;
 }
 
 .watch_bg{
-    height: 130vh;
+    height: 100vh;
 }
 
 .watch_bg img{
     height: 100%;
 }
+
