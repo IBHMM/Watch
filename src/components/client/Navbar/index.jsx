@@ -14,7 +14,7 @@ export function NavbarClient() {
   return (
     <>
       <Navbar bg="light" data-bs-theme="light" className="navbar_menu fixed-top">
-        <Container className="p-3 ps-5 pe-5">
+        <Container className="p-3">
           <Navbar.Brand href="#home">
             <img
               src="https://preview.colorlib.com/theme/timezone/assets/img/logo/logo.png.webp"
