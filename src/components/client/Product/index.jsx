@@ -3,7 +3,7 @@ import { useGetPopularItemsQuery } from "../../../redux/api/apipopularitems";
 import "../Product/style.css";
 import { CiHeart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../redux/api/cartSlice";
+import { addToCart } from "../../../redux/features/cartSlice";
 
 
 function Product() {
