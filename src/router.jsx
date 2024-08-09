@@ -7,7 +7,10 @@ import { ChoiceMain } from "./components/admin/Choises/Main";
 
 import Basket from "./components/client/Basket";
 import { PopularItemsMain } from "./components/admin/Popular/Main";
-
+import { NewArrivalsMain } from "./components/admin/NewArrivals/Main";
+import NotFound from "./pages/NotFound";
+import {Signin} from "./pages/admin/signin";
+import { CheckAuth } from "./Loaders/admin/Register";
 
 export const router = createBrowserRouter([
     {
@@ -27,14 +30,11 @@ export const router = createBrowserRouter([
     {
         path: "/admin",
         element: <Admin />,
+        loader: CheckAuth,
         children: [
             {
-                path: "photos",
-                element: <h1>Photos</h1>
-            },
-            {
                 path: "newarrivals",
-                element: <h1>New Arrivals</h1>
+                element: <NewArrivalsMain />
             },
             {
                 path: "choices",
@@ -43,11 +43,16 @@ export const router = createBrowserRouter([
             {
                 path: "popularitems",
                 element: <PopularItemsMain />
-            }
+            },
         ]
     },
     {
+        path: "/admin/signin",
+        loader: CheckAuth,
+        element: <Signin />,
+    },
+    {
         path: "*",
-        element: <h1>Not Found</h1>
+        element: <NotFound />
     }
 ])
