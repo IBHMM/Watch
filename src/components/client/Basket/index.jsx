@@ -90,7 +90,6 @@ function Basket() {
                         </div>
                       </td>
 
-
                       <span onClick={()=> dispatch(removeFromCart(item.id))} className="removeCart">
                         < CiSquareRemove/>
                       </span>

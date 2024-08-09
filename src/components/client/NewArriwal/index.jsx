@@ -1,14 +1,9 @@
 import React from "react";
-<<<<<<< HEAD
 import { useGetnewArrivalsQuery } from "../../../redux/api/apinewarrivals";
 import "../NewArriwal/style.css";
-=======
-import { useGetNewArrivalsQuery } from "../../../redux/api/apinewarrivals";
-import "../NewArriwal/style.css"
->>>>>>> 120ada991d8f59e3c993fd66eb59af338888f8c2
 
 function NewArriwal() {
-  const { data, isLoading, isError } = useGetNewArrivalsQuery();
+  const { data, isLoading, isError } = useGetnewArrivalsQuery();
 
   return (
     <div className="container newArriwal">
