@@ -2,6 +2,7 @@ import Header from "../../../components/client/Header";
 import NewArriwal from "../../../components/client/NewArriwal";
 import Photos from "../../../components/client/Photos";
 import Product from "../../../components/client/Product";
+import { Video } from "../../../components/client/Video/Video";
 
 export function Home() {
   return (
@@ -10,6 +11,7 @@ export function Home() {
       <NewArriwal/>
       <Photos/>
       <Product/>
+      <Video />
     </>
   );
 }
