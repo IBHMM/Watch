@@ -1,59 +1,57 @@
 import React from "react";
+<<<<<<< HEAD
+import { useGetnewArrivalsQuery } from "../../../redux/api/apinewarrivals";
+import "../NewArriwal/style.css";
+=======
 import { useGetNewArrivalsQuery } from "../../../redux/api/apinewarrivals";
 import "../NewArriwal/style.css"
+>>>>>>> 120ada991d8f59e3c993fd66eb59af338888f8c2
 
 function NewArriwal() {
   const { data, isLoading, isError } = useGetNewArrivalsQuery();
 
   return (
     <div className="container newArriwal">
-      <div className="d-flex justify-content-center">{isLoading && <h2>Loading ...</h2>}</div>
-      <div className="d-flex justify-content-center">{isError && <h2>ERROR</h2>}</div>
-      
-      
-        <div className="container">
-            {
-                data && ( 
-                    <>
-                    <div className="row">
-                        <div className="col-12">
-                        <h2 className="head_arriwals">New Arriwals</h2>
-                        </div>
-                            
+      <div className="d-flex justify-content-center">
+        {isLoading && <h2>Loading ...</h2>}
+      </div>
+      <div className="d-flex justify-content-center">
+        {isError && <h2>ERROR</h2>}
+      </div>
+
+      <div className="container">
+        {data && (
+          <>
+            <div className="row">
+              <div className="col-12">
+                <h2 className="head_arriwals">New Arriwals</h2>
+              </div>
+            </div>
+
+            <div className="row">
+              {data.map((items, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="col-md-4 d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div className="arriwals_img">
+                      <img src={items.image} alt="arriwalsimage" />
+                      {console.log(items.image)}
                     </div>
-
-                    <div className="row">
-
-                    {data.map((items, index)=>{
-
-                       return <div key={index} className="col-md-4 d-flex flex-column justify-content-center align-items-center">
-                                <div className="arriwals_img">
-                                    <img src={items.image} alt="arriwalsimage" />
-                                    {console.log(items.image)}
-                                </div>
-                                <div className="arriwals_content">
-                                    <p>{items.name}</p>
-                                </div>
-                                <div className="arriwals_price mb-4">
-                                    <p>
-                                        $ {items.price.toString().slice(0, 3)}
-                                        
-                                        
-                                    </p>
-                                </div>
-
-                        </div>
-
-                    })}
-
-                        
+                    <div className="arriwals_content">
+                      <p>{items.name}</p>
                     </div>
-                    </>
-
-
-                )
-            }
-        </div>
+                    <div className="arriwals_price mb-4">
+                      <p>$ {items.price.toString().slice(0, 3)}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
