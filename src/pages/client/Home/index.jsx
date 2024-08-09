@@ -1,3 +1,4 @@
+import { Choise } from "../../../components/client/Choises/Choise";
 import Header from "../../../components/client/Header";
 import NewArriwal from "../../../components/client/NewArriwal";
 import Photos from "../../../components/client/Photos";
@@ -12,6 +13,7 @@ export function Home() {
       <Photos/>
       <Product/>
       <Video />
+      <Choise />
     </>
   );
 }
