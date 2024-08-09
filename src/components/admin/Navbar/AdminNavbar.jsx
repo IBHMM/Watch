@@ -22,11 +22,6 @@ const AdminNavbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link to="/admin/photos" className="nav-link px-3">
-                Photos
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/admin/newarrivals" className="nav-link px-3">
                 New Arrivals
               </Link>
