@@ -7,7 +7,7 @@ import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
-} from "../../../redux/api/cartSlice";
+} from "../../../redux/features/cartSlice";
 import { CiSquareRemove } from "react-icons/ci";
 
 
