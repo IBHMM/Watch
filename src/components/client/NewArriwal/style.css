@@ -1,0 +1,36 @@
+.newArriwal {
+  padding-top: 200px;
+  padding-bottom: 170px;
+  text-align: center;
+}
+
+.arriwals_img {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.head_arriwals {
+  margin-bottom: 70px;
+  color: #000;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.arriwals_img h .arriwals_img img {
+  width: 100%;
+}
+
+.arriwals_content p {
+  color: #444444;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.arriwals_price {
+  color: #ff2020;
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+}

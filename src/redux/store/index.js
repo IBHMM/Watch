@@ -1,11 +1,20 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import { setupListeners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
+import { popularItemsApi } from '../api/apipopularitems';
+import { NewArrivals } from '../api/apinewarrivals';
+import { Choises } from '../api/apichoise';
+import { photosApi } from '../api/apiphotos';
+import cartReducer from '../api/cartSlice';
 
-// export const store = configureStore({
-// //   reducer: {
-// //   },
-// //   middleware: (getDefaultMiddleware) =>
-// //     getDefaultMiddleware().concat(CategoryApi.middleware),
-// });
+const store = configureStore({
+  reducer: {
+    [popularItemsApi.reducerPath]: popularItemsApi.reducer,
+    [NewArrivals.reducerPath] : NewArrivals.reducer,
+    [Choises.reducerPath] : Choises.reducer,
+    [photosApi.reducerPath] : photosApi.reducer,
+    cart: cartReducer, 
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(popularItemsApi.middleware, NewArrivals.middleware, Choises.middleware, photosApi.middleware),
+});
 
-// setupListeners(store.dispatch);
+export default store;

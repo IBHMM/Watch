@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+.row{
+    padding: 0 30px;
+}
+
+.container_heading{
+    min-height: 100vh;
+    background-color: #f0f0f2;
+}
+.header_content{
+    width: 70%;
+    
+}
+.content_heading{
+    
+    font-size: 76px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 26px;
+}
+
+.content_desc{
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #212025;
+    margin-bottom: 60px;
+    padding-right: 50px;
+}
+
+.content_btn button{
+    padding: 15px 29px;
+    background: #4a4a4b;
+    color: white;
+}
+
+.watch_bg{
+    height: 100vh;
+}
+
+.watch_bg img{
+    height: 100%;
+}
+
+
