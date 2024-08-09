@@ -11,6 +11,7 @@ import { NewArrivalsMain } from "./components/admin/NewArrivals/Main";
 import NotFound from "./pages/NotFound";
 import {Signin} from "./pages/admin/signin";
 import { CheckAuth } from "./Loaders/admin/Register";
+import { Login } from "./components/client/Login";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             {
                 path: "basket", 
                 element: <Basket />
+            },
+            {
+                path: "login",
+                element: <Login />
             }
         ]
     },
