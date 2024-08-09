@@ -1,5 +1,5 @@
 import "./Video.css";
-import arrow from '../../../assets/icons/arrow.png'
+import arrow from '../../../assets/icons/arrow.svg'
 
 export function Video() {
 
